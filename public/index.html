@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation with Just-validate</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+  </head>
+  <body>
+    <form id="basic_form" autocomplete="off" novalidate="novalidate">
+      <div class="control-wrapper">
+        <label class="input-label" for="company"
+          >Razão Social (ou Nome da Empresa)</label
+        >
+        <div class="input-wrapper">
+          <input
+            id="company"
+            class="input"
+            autocomplete="off"
+            type="text"
+            placeholder="Digite a razão social"
+          />
+          <div id="companyError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="email">Email</label>
+        <div class="input-wrapper">
+          <input
+            id="email"
+            class="input"
+            autocomplete="off"
+            type="text"
+            placeholder="Digite seu email"
+          />
+          <div id="emailError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="cnpj">CNPJ</label>
+        <div class="input-wrapper">
+          <input
+            id="cnpj"
+            class="input"
+            autocomplete="off"
+            type="text"
+            placeholder="Digite o CNPJ"
+          />
+          <div id="cnpjError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="phone">Telefone</label>
+        <div class="input-wrapper">
+          <input
+            id="phone"
+            class="input"
+            autocomplete="off"
+            type="text"
+            placeholder="Digite o telefone"
+          />
+          <div id="phoneError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="cep">CEP</label>
+        <div class="input-wrapper">
+          <input
+            id="cep"
+            class="input"
+            autocomplete="off"
+            type="text"
+            placeholder="Digite o CEP"
+          />
+          <div id="cepError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="address">Endereço (somente rua)</label>
+        <div class="input-wrapper">
+          <input
+            id="address"
+            class="input"
+            autocomplete="off"
+            type="text"
+            placeholder="Digite o endereço"
+          />
+          <div id="addressError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="number">Número</label>
+        <div class="input-wrapper">
+          <input
+            id="number"
+            class="input"
+            autocomplete="off"
+            type="text"
+            placeholder="Digite o número"
+          />
+          <div id="numberError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="complement">Complemento</label>
+        <div class="input-wrapper">
+          <input
+            id="complement"
+            class="input"
+            autocomplete="off"
+            type="text"
+            placeholder="Digite o complemento"
+          />
+          <div id="complementError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="neighborhood">Bairro</label>
+        <div class="input-wrapper">
+          <input
+            id="neighborhood"
+            class="input"
+            autocomplete="off"
+            type="text"
+            placeholder="Digite o bairro"
+          />
+          <div id="neighborhoodError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="city">Cidade</label>
+        <div class="input-wrapper">
+          <input
+            id="city"
+            class="input"
+            autocomplete="off"
+            type="text"
+            placeholder="Digite a cidade"
+          />
+          <div id="cityError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="state"
+          >Estado (sigla com 2 letras em maiúsculo)</label
+        >
+        <div class="input-wrapper">
+          <input
+            id="state"
+            class="input"
+            autocomplete="off"
+            type="text"
+            placeholder="Digite o estado"
+            maxlength="2"
+            pattern="[A-Z]{2}"
+          />
+          <div id="stateError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="connections">Número de Conexões</label>
+        <div class="input-wrapper">
+          <input
+            id="connections"
+            class="input"
+            autocomplete="off"
+            type="number"
+            placeholder="Digite o número de conexões"
+          />
+          <div id="connectionsError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <label class="input-label" for="users">Número de Usuários</label>
+        <div class="input-wrapper">
+          <input
+            id="users"
+            class="input"
+            autocomplete="off"
+            type="number"
+            placeholder="Digite o número de usuários"
+          />
+          <div id="usersError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="control-wrapper">
+        <button type="submit" class="button">Submit</button>
+      </div>
+    </form>
+
+    <script src="/js/scripts.js"></script>
+  </body>
+</html>
