@@ -48,6 +48,8 @@
             autocomplete="off"
             type="text"
             placeholder="Digite o CNPJ"
+            onkeyup="handleCnpj(event)"
+            maxlength="18"
           />
           <div id="cnpjError" class="error"></div>
         </div>
@@ -76,6 +78,7 @@
             autocomplete="off"
             type="text"
             placeholder="Digite o CEP"
+            onblur="getAddress(this.value)"
           />
           <div id="cepError" class="error"></div>
         </div>
@@ -163,7 +166,6 @@
             type="text"
             placeholder="Digite o estado"
             maxlength="2"
-            pattern="[A-Z]{2}"
           />
           <div id="stateError" class="error"></div>
         </div>
@@ -203,5 +205,6 @@
     </form>
 
     <script src="/js/scripts.js"></script>
+    <script src="/js/validations.js"></script>
   </body>
 </html>
