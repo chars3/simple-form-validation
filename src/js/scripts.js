@@ -31,13 +31,12 @@ async function fetchCep(cep) {
 // Função para buscar o endereço com base no CEP
 function getAddress(cepValue) {
   let cep = cepValue.replace(/\D/g, "");
+  console.log(cep);
 
   //verifica se o cep possui valor informado
   if (cep != "") {
-    console.log(cep);
-
     //expressão regular para validar o cep
-    let cepValidate = /^[0-9]{8}$/;
+    let cepValidate = /^[0-9]{5}-?[0-9]{3}$/;
 
     //valid o formato do cep
     if (cepValidate.test(cep)) {
@@ -81,3 +80,37 @@ const cnpjMask = (value) => {
   value = value.replace(/(\d{4})(\d)/, "$1-$2");
   return value;
 };
+//=====FIM: Máscara CNPJ =====
+
+// Formata campo de telefone para o código +55
+function handlePhoneNumber() {
+  const phone = document.getElementById("phone").value;
+  const countryCode = "+55";
+  let formattedNumber = countryCode + phone;
+  formattedNumber = formattedNumber.replace(/[^\d]+/g, "");
+  console.log(formattedNumber);
+  return formattedNumber;
+}
+
+//===== MáscaraTelefone =====
+const handlePhone = (event) => {
+  let input = event.target;
+  input.value = phoneMask(input.value);
+};
+
+const phoneMask = (value) => {
+  if (!value) return "";
+  value = value.replace(/\D/g, "");
+  value = value.replace(/(\d{2})(\d)/, "($1) $2");
+  value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+  return value;
+};
+
+function submitForm() {
+  const form = document.getElementById("basic_form");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    console.log("form enviado");
+    form.submit();
+  });
+}
