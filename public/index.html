@@ -4,230 +4,247 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Validation with Just-validate</title>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
   </head>
   <body>
-    <form id="basic_form" autocomplete="off" novalidate="novalidate">
-      <div class="control-wrapper">
-        <label class="input-label" for="company"
-          >Razão Social (ou Nome da Empresa)</label
-        >
-        <div class="input-wrapper">
-          <input
-            id="company"
-            class="input"
-            autocomplete="off"
-            type="text"
-            placeholder="Digite a razão social"
-          />
-          <div id="companyError" class="error"></div>
+    <form
+      id="basic_form"
+      class="container mt-5"
+      autocomplete="off"
+      novalidate="novalidate"
+    >
+      <div class="row">
+        <!-- Empresa -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="company"
+              >Razão Social (ou Nome da Empresa)</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="company"
+              placeholder="Digite a razão social"
+            />
+            <div id="companyError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              placeholder="Digite seu email"
+            />
+            <div id="emailError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- CNPJ -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="cnpj">CNPJ</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cnpj"
+              placeholder="Digite o CNPJ"
+              onkeyup="handleCnpj(event)"
+              maxlength="18"
+            />
+            <div id="cnpjError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- Telefone -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="phone">Telefone</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="phone"
+              placeholder="Digite o telefone"
+              onkeyup="handlePhone(event)"
+              maxlength="15"
+            />
+            <div id="phoneError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- CEP -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="cep">CEP</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cep"
+              placeholder="Digite o CEP"
+              onblur="getAddress(this.value)"
+            />
+            <div id="cepError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- Endereço -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="address"
+              >Endereço (somente rua)</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              placeholder="Digite o endereço"
+            />
+            <div id="addressError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- Número -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="number">Número</label>
+            <input
+              type="text"
+              class="form-control"
+              id="number"
+              placeholder="Digite o número"
+            />
+            <div id="numberError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- Complemento -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="complement">Complemento</label>
+            <input
+              type="text"
+              class="form-control"
+              id="complement"
+              placeholder="Digite o complemento"
+            />
+            <div id="complementError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- Bairro -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="neighborhood">Bairro</label>
+            <input
+              type="text"
+              class="form-control"
+              id="neighborhood"
+              placeholder="Digite o bairro"
+            />
+            <div id="neighborhoodError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- Cidade -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="city">Cidade</label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              placeholder="Digite a cidade"
+            />
+            <div id="cityError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- Estado -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="state"
+              >Estado (sigla com 2 letras em maiúsculo)</label
+            >
+            <select id="state" class="form-control">
+              <option selected disabled>Selecione o estado</option>
+              <option value="AC">AC</option>
+              <option value="AL">AL</option>
+              <option value="AP">AP</option>
+              <option value="AM">AM</option>
+              <option value="BA">BA</option>
+              <option value="CE">CE</option>
+              <option value="DF">DF</option>
+              <option value="ES">ES</option>
+              <option value="GO">GO</option>
+              <option value="MA">MA</option>
+              <option value="MT">MT</option>
+              <option value="MS">MS</option>
+              <option value="MG">MG</option>
+              <option value="PA">PA</option>
+              <option value="PB">PB</option>
+              <option value="PR">PR</option>
+              <option value="PE">PE</option>
+              <option value="PI">PI</option>
+              <option value="RJ">RJ</option>
+              <option value="RN">RN</option>
+              <option value="RS">RS</option>
+              <option value="RO">RO</option>
+              <option value="RR">RR</option>
+              <option value="SC">SC</option>
+              <option value="SP">SP</option>
+              <option value="SE">SE</option>
+              <option value="TO">TO</option>
+            </select>
+            <div id="stateError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- Número de Conexões -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="form-label" for="connections"
+              >Número de Conexões</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="connections"
+              placeholder="Digite o número de conexões"
+            />
+            <div id="connectionsError" class="error"></div>
+          </div>
+        </div>
+
+        <!-- Número de Usuários -->
+        <div class="col-12">
+          <div class="form-group">
+            <label class="form-label" for="users">Número de Usuários</label>
+            <input
+              type="number"
+              class="form-control"
+              id="users"
+              placeholder="Digite o número de usuários"
+            />
+            <div id="usersError" class="error"></div>
+          </div>
         </div>
       </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="email">Email</label>
-        <div class="input-wrapper">
-          <input
-            id="email"
-            class="input"
-            autocomplete="off"
-            type="text"
-            placeholder="Digite seu email"
-          />
-          <div id="emailError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="cnpj">CNPJ</label>
-        <div class="input-wrapper">
-          <input
-            id="cnpj"
-            class="input"
-            autocomplete="off"
-            type="text"
-            placeholder="Digite o CNPJ"
-            onkeyup="handleCnpj(event)"
-            maxlength="18"
-          />
-          <div id="cnpjError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="phone">Telefone</label>
-        <div class="input-wrapper">
-          <input
-            id="phone"
-            class="input"
-            autocomplete="off"
-            maxlength="15"
-            type="tel"
-            placeholder="Digite o telefone"
-            onkeyup="handlePhone(event)"
-          />
-          <div id="phoneError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="cep">CEP</label>
-        <div class="input-wrapper">
-          <input
-            id="cep"
-            class="input"
-            autocomplete="off"
-            type="text"
-            placeholder="Digite o CEP"
-            onblur="getAddress(this.value)"
-          />
-          <div id="cepError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="address">Endereço (somente rua)</label>
-        <div class="input-wrapper">
-          <input
-            id="address"
-            class="input"
-            autocomplete="off"
-            type="text"
-            placeholder="Digite o endereço"
-          />
-          <div id="addressError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="number">Número</label>
-        <div class="input-wrapper">
-          <input
-            id="number"
-            class="input"
-            autocomplete="off"
-            type="text"
-            placeholder="Digite o número"
-          />
-          <div id="numberError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="complement">Complemento</label>
-        <div class="input-wrapper">
-          <input
-            id="complement"
-            class="input"
-            autocomplete="off"
-            type="text"
-            placeholder="Digite o complemento"
-          />
-          <div id="complementError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="neighborhood">Bairro</label>
-        <div class="input-wrapper">
-          <input
-            id="neighborhood"
-            class="input"
-            autocomplete="off"
-            type="text"
-            placeholder="Digite o bairro"
-          />
-          <div id="neighborhoodError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="city">Cidade</label>
-        <div class="input-wrapper">
-          <input
-            id="city"
-            class="input"
-            autocomplete="off"
-            type="text"
-            placeholder="Digite a cidade"
-          />
-          <div id="cityError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="state"
-          >Estado (sigla com 2 letras em maiúsculo)</label
-        >
-        <div class="input-wrapper">
-          <select id="state" class="input">
-            <option selected disabled>Selecione o estado</option>
-            <option value="AC">AC</option>
-            <option value="AL">AL</option>
-            <option value="AP">AP</option>
-            <option value="AM">AM</option>
-            <option value="BA">BA</option>
-            <option value="CE">CE</option>
-            <option value="DF">DF</option>
-            <option value="ES">ES</option>
-            <option value="GO">GO</option>
-            <option value="MA">MA</option>
-            <option value="MT">MT</option>
-            <option value="MS">MS</option>
-            <option value="MG">MG</option>
-            <option value="PA">PA</option>
-            <option value="PB">PB</option>
-            <option value="PR">PR</option>
-            <option value="PE">PE</option>
-            <option value="PI">PI</option>
-            <option value="RJ">RJ</option>
-            <option value="RN">RN</option>
-            <option value="RS">RS</option>
-            <option value="RO">RO</option>
-            <option value="RR">RR</option>
-            <option value="SC">SC</option>
-            <option value="SP">SP</option>
-            <option value="SE">SE</option>
-            <option value="TO">TO</option>
-          </select>
-          <div id="stateError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="connections">Número de Conexões</label>
-        <div class="input-wrapper">
-          <input
-            id="connections"
-            class="input"
-            autocomplete="off"
-            type="number"
-            placeholder="Digite o número de conexões"
-          />
-          <div id="connectionsError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <label class="input-label" for="users">Número de Usuários</label>
-        <div class="input-wrapper">
-          <input
-            id="users"
-            class="input"
-            autocomplete="off"
-            type="number"
-            placeholder="Digite o número de usuários"
-          />
-          <div id="usersError" class="error"></div>
-        </div>
-      </div>
-
-      <div class="control-wrapper">
-        <button type="submit" class="button">Submit</button>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Enviar</button>
       </div>
     </form>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="/js/scripts.js"></script>
     <script src="/js/validations.js"></script>
   </body>
