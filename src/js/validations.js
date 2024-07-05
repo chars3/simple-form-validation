@@ -3,6 +3,7 @@ const validation = new window.JustValidate("#basic_form", {
   onValidate: (isValid, fields) => {
     // Chama a função handlePhoneNumber() para cada campo antes da validação
     for (const field in fields) {
+      console.log(field);
       if (field === "#phone") {
         handlePhoneNumber();
       }
@@ -57,16 +58,16 @@ validation
       errorMessage: "Digite um telefone válido",
     },
   ])
-  .addField("#cep", [
-    {
-      rule: "required",
-      errorMessage: "CEP é obrigatório",
-    },
-    // {
-    //   rule: "number",
-    //   errorMessage: "CEP deve conter apenas números",
-    // },
-  ])
+  // .addField("#cep", [
+  //   {
+  //     rule: "required",
+  //     errorMessage: "CEP é obrigatório",
+  //   },
+  // {
+  //   rule: "number",
+  //   errorMessage: "CEP deve conter apenas números",
+  // },
+  // ])
   // .addField("#address", [
   //   {
   //     rule: "required",
@@ -132,5 +133,5 @@ validation
   //   },
   // ]);
   .onSuccess((event) => {
-    document.getElementById("basic_form").submit();
+    submitForm();
   });

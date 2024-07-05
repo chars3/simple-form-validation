@@ -106,11 +106,27 @@ const phoneMask = (value) => {
   return value;
 };
 
+function getFormData() {
+  const data = {
+    company: document.getElementById("company").value,
+    email: document.getElementById("email").value,
+    cnpj: document.getElementById("cnpj").value, // Remove a máscara do CNPJ
+    phone: handlePhoneNumber(), // Formata o número de telefone
+    cep: document.getElementById("cep").value,
+    address: document.getElementById("address").value,
+    number: document.getElementById("number").value,
+    complement: document.getElementById("complement").value,
+    neighborhood: document.getElementById("neighborhood").value,
+    city: document.getElementById("city").value,
+    state: document.getElementById("state").value,
+    connections: document.getElementById("connections").value,
+    users: document.getElementById("users").value,
+  };
+
+  console.log("Dados do formulário:", data);
+  return data;
+}
+
 function submitForm() {
-  const form = document.getElementById("basic_form");
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    console.log("form enviado");
-    form.submit();
-  });
+  getFormData();
 }
